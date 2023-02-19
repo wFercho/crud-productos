@@ -4,6 +4,7 @@
 Tener instalado:
 - [Nodejs](https://nodejs.org/en/)
 - Algún manejador de paquetes (**npm, pnpm, yarn**), recomendamos **pnpm**.
+- [Git](https://git-scm.com/)
 ## Descargar el proyecto
 Clonamos este repositorio:
 ```bash
