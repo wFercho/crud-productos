@@ -1,5 +1,9 @@
 
 # CRUD Productos
+## Requisitos
+Tener instalado:
+- [Nodejs](https://nodejs.org/en/)
+- Algún manejador de paquetes (**npm, pnpm, yarn**), recomendamos **pnpm**.
 ## Descargar el proyecto
 Clonamos este repositorio:
 ```bash
