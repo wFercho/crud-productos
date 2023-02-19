@@ -23,6 +23,8 @@ Haciendo uso de [Railway](https://railway.app/), crearemos un nuevo proyecto con
 ![](./images/railway-home-page.png)
 ![](./images/railway-project-selection.png)
 ![](./images/railway-variables.png)
+
+
 Estas son las variables que usaremos para conectarnos a la base de datos que acabamos de crear.  
 
 Tomando como base los nombres de variables de entorno que están en el archivo .env.example, creamos un archivo con el nombre ".env" o ".env.local", en el que definiremos nuestras variabales de entorno.
