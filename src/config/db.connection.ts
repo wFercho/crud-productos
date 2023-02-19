@@ -14,6 +14,7 @@ const connectToDB = async () => {
             database: DB_NAME,
           });
           await pool.connect()
+          await pool.query('CREATE TABLE IF NOT EXISTS product (id SERIAL PRIMARY KEY, name VARCHAR(200), description VARCHAR(200), price INT)')
     } catch (error) {
         console.log(error);
     }

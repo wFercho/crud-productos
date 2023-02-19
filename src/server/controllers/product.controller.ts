@@ -27,7 +27,6 @@ const getProduct = async (req: NextApiRequest, res: NextApiResponse) => {
     try {      
       const id = req.query.id?.toString()
       if(id){
-        console.log("ID",id);
         
         const rows = await getOne(id)
         return res.status(200).json(rows);

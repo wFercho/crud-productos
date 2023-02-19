@@ -3,18 +3,19 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Layout } from "@app/components/Layout";
 import { GetServerSideProps } from "next";
+import { Product } from "@app/types";
 
 interface Props {
   product: any[]
 }
 function ProductPage(props:Props) {
   const router = useRouter();
-  const product = props.product[0];
+  const product:Product = props.product[0];
   const handleDelete = async (id: string) => {
     try {
       await axios.delete("/api/products/" + id);
       toast.success("Producto eliminado");
-      router.push("/");
+      router.push("/products");
     } catch (error) {
       if (isAxiosError(error)) console.error(error.response?.data.message);
     }
@@ -23,15 +24,15 @@ function ProductPage(props:Props) {
   return (
     <Layout>
       <div className="p-6 bg-white dark:bg-gray-800">
-        <p>Nombre: {product.name}</p>
-        <p>Descripción: {product.description}</p>
-        <p>Precio: {product.price}</p>
+        <p className="font-bold">Nombre: <span className="font-normal">{product.name}</span></p>
+        <p className="font-bold">Descripción: <span className="font-normal">{product.description}</span></p>
+        <p className="font-bold">Precio: <span className="font-normal">{product.price}</span></p>
       </div>
 
       <div className="mt-7 flex justify-center">
         <button
           className="bg-red-500 hover:bg-red-700 py-2 px-3 rounded"
-          onClick={() => handleDelete(product.id)}
+          onClick={() => handleDelete(product.id.toString())}
         >
           Eliminar
         </button>

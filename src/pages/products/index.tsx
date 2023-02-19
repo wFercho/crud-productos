@@ -2,6 +2,7 @@ import axios from "axios";
 import { Layout } from "@app/components/Layout";
 import { ProductCard } from "@app/components/ProductCard";
 import { Product } from "@app/types";
+import { ENV } from "@app/config/env/env.variables";
 
 interface Props {
   products: Product[];
@@ -34,29 +35,33 @@ function ProductsPage({ products = [], googleDocData }: Props) {
 export default ProductsPage;
 
 export const getServerSideProps = async () => {
-  const { rows } = await axios
+  const products = await axios
     .get("http://localhost:3000/api/products")
     .then(({ data }) => data)
-    .catch((error) => console.error(error));
+    .catch(() => console.log("ERROR AL ACCEDER A LA BASE DE DATOS"))
+    
 
- 
-
-  const googleDocID = "1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg";
-
-  let data = "Error al cargar el contenido";
+  const googleDocID = ENV.ID_ARCH_PLANO_DRIVE;
+  
+  
+  let dataGoogleDrive = "Error al cargar el contenido";
   try {
+    
     const res = await axios.get(
       `https://docs.google.com/uc?export=download&id=${googleDocID}`
     );
-    data = res.data;
+    
+    dataGoogleDrive = res.data;
   } catch (error) {
-    console.log(error);
+    console.log("ERROR AL ENCONTRAR EL DOCUMENTO DE GOOGLE DRIVE", error);
   }
 
+  console.log({dataGoogleDrive});
+  
   return {
     props: {
-      products: rows,
-      googleDocData: data,
+      products: (products != undefined ? products.rows : []),
+      googleDocData: dataGoogleDrive,
     },
   };
 };
