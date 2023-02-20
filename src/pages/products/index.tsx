@@ -56,7 +56,6 @@ export const getServerSideProps = async () => {
     console.log("ERROR AL ENCONTRAR EL DOCUMENTO DE GOOGLE DRIVE", error);
   }
 
-  console.log({dataGoogleDrive});
   
   return {
     props: {

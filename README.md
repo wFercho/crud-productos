@@ -61,4 +61,5 @@ yarn run dev
 Usando nuestro navegador de preferencia accedemos a:
 
  [http://localhost:3000/products](http://localhost:3000/products) 
-
+## Diagrama de despliegue
+![Diagrama de Despliegue](./images/diagrama-despliegue.png)
