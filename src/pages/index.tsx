@@ -1,4 +1,4 @@
-import '@app/config/db.connection'
+import {connectToDB} from '@app/config/db.connection'
 import axios from "axios";
 import { Layout } from "@app/components/Layout";
 import { ProductCard } from "@app/components/ProductCard";
@@ -36,6 +36,7 @@ function ProductsPage({ products = [], googleDocData }: Props) {
 export default ProductsPage;
 
 export const getServerSideProps = async () => {
+  await connectToDB();
   const products = await axios
     .get("http://localhost:3000/api/products")
     .then(({ data }) => data)

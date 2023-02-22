@@ -20,6 +20,4 @@ const connectToDB = async () => {
     }
 }
 
-connectToDB()
-
-export { pool };
+export { pool , connectToDB};
