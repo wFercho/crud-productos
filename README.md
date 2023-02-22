@@ -1,15 +1,15 @@
 
 # CRUD Productos
 ## Descripción de la aplicación
-Esta aplicación es un CRUD de productos creada con NextJS, React y Typescript, que usa como motor de base de datos Postgresql y consume el contenido de un archivo de texto plano alojado en Google Drive. La aplicación puede ser desplegada en cualquier servicio, pero el recomendado en este caso para
+Esta aplicación es un CRUD de productos creada con NextJS, React y Typescript, que usa como motor de base de datos Postgresql y consume el contenido de un archivo de texto plano alojado en Google Drive. La aplicación puede ser desplegada a través de cualquier servicio. Se explica cómo hacerlo usando Ngrok desde nuestra maquina local y con Vercel usando su plataforma.
 ## Requisitos
 Tener instalado:
 - [Nodejs](https://nodejs.org/en/)
 - Algún manejador de paquetes (**npm, pnpm, yarn**), recomendamos **pnpm**.
 - [Git](https://git-scm.com/)
 - Una cuenta en [Ngrok](https://ngrok.com/)
-- El [CLI de Ngrok](https://ngrok.com/download) para poder exponer nuestra aplicación a internet. *Este y los pasos anteriores es si decidimos exponer la aplicación desde nuestro host local.*
-- Una cuenta en [Vercel](https://vercel.com/) y hacerle fork a este repositorio si queremos desplegarlo por Vercerl.
+- El [CLI de Ngrok](https://ngrok.com/download) para poder exponer nuestra aplicación a internet. *Este y los pasos anteriores es si decidimos exponer la aplicación desde nuestro maquina local.*
+- Una cuenta en [Vercel](https://vercel.com/) y hacerle fork a este repositorio si queremos desplegarlo por Vercel.
 ### Paquetes que se usan en el proyecto
 #### Producción
 - Axios, para hacer peticiones HTTP.
@@ -20,9 +20,9 @@ Tener instalado:
 #### Desarrollo
 - Typescript, para tener los beneficios de un lenguaje tipado.
 - Tailwind, un framework de CSS para dar estilos a nuestras interfaces.
-## Diagrama de despliegue en local
+## Diagrama de despliegue usando nuestra maquina local
 ![Diagrama de Despliegue](./images/diagrama-despliegue.png)
-## Diagrama de despliegue en Vercel
+## Diagrama de despliegue usando Vercel
 ![Diagrama de Despliegue](./images/vercel-deploy-diagrama.png)
 ## Desplegando la aplicación desde nuestro maquina local a través de Ngrok
 Primero clonamos este repositorio:
@@ -54,7 +54,7 @@ Haciendo uso de [Railway](https://railway.app/), crearemos un nuevo proyecto con
 
 Estas son las variables que usaremos para conectarnos a la base de datos que acabamos de crear.  
 
-Tomando como base los nombres de variables de entorno que están en el archivo .env.example, creamos un archivo con el nombre ".env" o ".env.local", en el que definiremos nuestras variabales de entorno.
+Tomando como base los nombres de variables de entorno que están en el archivo .env.example, creamos un archivo con el nombre  ".env.local", en el que definiremos nuestras variabales de entorno.
 ```yaml
 DB_PORT=
 DB_HOST=
@@ -67,7 +67,7 @@ SERVER=
 ```
 En el archivo que acabamos de crear colocamos las variables que tenemos en railway.  
 
-La aplicación de CRUD de productos automáticamente creará la tabla "productos" en la base de datos que acabamos de crear. Por lo que solo nos tenemos que encargar de ingresar las variables de entorno para lograr la conexión con la base de datos.
+La aplicación de CRUD de productos automáticamente creará la tabla "product" en la base de datos que acabamos de crear. Por lo que solo nos tenemos que encargar de ingresar las variables de entorno para lograr la conexión con la base de datos.
 
 ### Configurando la conexión a archivo externo (Google Drive)
 Para consumir el contenido de un archivo de texto plano que esté alojado en Google Drive: 
@@ -76,7 +76,7 @@ Para consumir el contenido de un archivo de texto plano que esté alojado en Goo
 2. De ese enlace inferimos el ID del documento
 "https://drive.google.com/file/d/1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg/view". 
 Para este caso (siendo 19 de Febrero de 2023), así es como se ve el enlace para la vista del documento. El ID es el que se encuentra después del **"d/"** y va hasta el siguiente **"/"**, en este caso sería "**1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg**". Este va en la variable de entorno "**ID_ARCH_PLANO_DRIVE**".
-## Ejecutando el servidor de desarrollo
+## Haciendo Build de la apliación y ejecutandola
 Finalmente, una vez configurada la conexión a una base de datos externa Postgresql, y la conexión a un archivo de texto plano alojado en Google Drive, accediendo a el desde un enlace publico, finalmente hacemos build de la aplicación:
 ```bash
 pnpm run build
@@ -121,4 +121,4 @@ Estando acá tenemos que estar atentos de ingresar correctamente los nombres de 
 
 **NOTA**: La variable de entorno *SERVER* se agrega después de hacer el deploy, ya que necesitamos que Vercel nos genere el Domain.
 ![](./images/domain-dashboard.png)
-En este caso es la que encontramos abajo de "DOMAINS", la copiamos y luego nos vamos a las settings que encontramos en la parte superior de la página de vercel, luego en la parte izquierda encontramos el apartado de "Environment Varaibles", estando ahí definimos la variable de entorno *SERVER* con la URL que acabamos de copiar.
+En este caso la URL es la que encontramos abajo de "DOMAINS", la copiamos y luego nos vamos a las settings que encontramos en la parte superior de la página de Vercel estando en la ventana de nuestro proyecto, luego en la parte izquierda encontramos el apartado de "Environment Varaibles", entramos. Ya estando ahí definimos la variable de entorno *SERVER* con la URL que acabamos de copiar.
