@@ -77,25 +77,48 @@ Para consumir el contenido de un archivo de texto plano que esté alojado en Goo
 "https://drive.google.com/file/d/1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg/view". 
 Para este caso (siendo 19 de Febrero de 2023), así es como se ve el enlace para la vista del documento. El ID es el que se encuentra después del **"d/"** y va hasta el siguiente **"/"**, en este caso sería "**1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg**". Este va en la variable de entorno "**ID_ARCH_PLANO_DRIVE**".
 ## Ejecutando el servidor de desarrollo
-Finalmente, una vez configurada la conexión a una base de datos externa Postgresql, y la conexión a un archivo de texto plano alojado en Google Drive, accediendo a el desde un enlace publico, finalmente ejecutamos el servidor en entorno de desarrollo con:
+Finalmente, una vez configurada la conexión a una base de datos externa Postgresql, y la conexión a un archivo de texto plano alojado en Google Drive, accediendo a el desde un enlace publico, finalmente hacemos build de la aplicación:
 ```bash
-pnpm run dev
+pnpm run build
 # or
-npm run dev
+npm run build
 # or
-yarn run dev
+yarn run build
+```
+Luego de esto podemos ejecutar la aplicación:
+```bash
+pnpm run start
+# or
+npm run start
+# or
+yarn run start
 ```
 
 Usando nuestro navegador de preferencia accedemos a:
 
  [http://localhost:3000/products](http://localhost:3000/products) 
+## Desplegando la aplicación usando Ngrok
+Teniendo ejecutada la apliación en nuestra maquina local, solo nos resta usar el CLI de Ngrok para exponer nuestra aplicación a internet:
+```bash
+ngrok http 3000
+```
+Siendo **http** el protocolo que usamos y **3000** el puerto donde se  está ejecutando la aplicación.
+
+Finalmente para acceder a nuestra aplicación desde internet usamos la **URL** 	que Ngrok nos generó. (El siguiente es un ejemplo de lo que veriamos al ejecutar ngrok exponiendo por http el la aplicación que está ejecutandose en el puerto 3000)
+![](./images/ngrok-http-connection.png)
 ## Desplegando la aplicación usando Vercel
 A diferencia de como se explicó para exponer la aplicación a internet de forma local usando Ngrok, acá todo el proceso lo hacemos usando la plataforma de Vercel.  
 1. Debemos tener una cuenta en GitHub, para que de esta forma podamos hacerle fork a este repositorio.
 2. Una vez hecho el fork, y ya teniendo nuestra cuenta en Vercel, creamos un proyecto en esta.
 ![Creando proyecto en Vercel](./images/creando-proyecto-vercel.png)
 3. Importamos el repositorio que creamos haciendole fork a este.
+
 ![RespoVercel](./images/import-git-repository-vercel.png)
 4. Una vez seleccionado el repositorio, pasamos a configurar las variables de entorno. 
+
 ![](./images/vercel-variables-entorno.png)
 Estando acá tenemos que estar atentos de ingresar correctamente los nombres de las variables de entorno que podemos ver en el archivo ".env.example" con sus respectivos valores. Una vez hecho esto podemos hacer Deploy.
+
+**NOTA**: La variable de entorno *SERVER* se agrega después de hacer el deploy, ya que necesitamos que Vercel nos genere el Domain.
+![](./images/domain-dashboard.png)
+En este caso es la que encontramos abajo de "DOMAINS", la copiamos y luego nos vamos a las settings que encontramos en la parte superior de la página de vercel, luego en la parte izquierda encontramos el apartado de "Environment Varaibles", estando ahí definimos la variable de entorno *SERVER* con la URL que acabamos de copiar.
