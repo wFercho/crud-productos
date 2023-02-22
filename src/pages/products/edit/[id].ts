@@ -1,2 +1,2 @@
-import newPage from "@app/pages/new";
+import newPage from "@app/pages/new-product";
 export default newPage;

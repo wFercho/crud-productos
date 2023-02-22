@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { ProductForm } from "@app/components/ProductForm";
 import { Layout } from "@app/components/Layout";
 
@@ -13,12 +13,12 @@ function NewPage() {
 }
 export default NewPage;
 
-export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/products");
+// export const getServerSideProps = async () => {
+//   const res = await axios.get("http://localhost:3000/api/products");
 
-  return {
-    props: {
-      products: res.data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       products: res.data,
+//     },
+//   };
+// };
