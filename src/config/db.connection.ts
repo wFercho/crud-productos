@@ -16,4 +16,5 @@ pool.query(
   "CREATE TABLE IF NOT EXISTS product (id SERIAL PRIMARY KEY, name VARCHAR(200), description VARCHAR(200), price INT)"
 );
 
+
 export { pool };
