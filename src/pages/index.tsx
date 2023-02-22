@@ -1,3 +1,4 @@
+import '@app/config/db.connection'
 import axios from "axios";
 import { Layout } from "@app/components/Layout";
 import { ProductCard } from "@app/components/ProductCard";
