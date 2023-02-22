@@ -40,7 +40,7 @@ export const getServerSideProps = async () => {
   const products = await axios
     .get("http://localhost:3000/api/products")
     .then(({ data }) => data)
-    .catch(() => console.error("ERROR AL ACCEDER A LA BASE DE DATOS"))
+    .catch((error) => console.error("ERROR AL ACCEDER A LA BASE DE DATOS", error))
     console.log("PRODUCTOS",products);
     
     
