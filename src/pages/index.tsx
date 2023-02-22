@@ -41,6 +41,8 @@ export const getServerSideProps = async () => {
     .get("http://localhost:3000/api/products")
     .then(({ data }) => data)
     .catch(() => console.error("ERROR AL ACCEDER A LA BASE DE DATOS"))
+    console.log("PRODUCTOS",products);
+    
     
   
   const googleDocID = ENV.ID_ARCH_PLANO_DRIVE;
