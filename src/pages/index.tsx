@@ -38,7 +38,7 @@ export default ProductsPage;
 export const getServerSideProps = async () => {
  
   const products = await axios
-    .get("http://localhost:3000/api/products")
+    .get(`${ENV.SERVER}/api/products`)
     .then(({ data }) => data)
     .catch((error) => console.error("ERROR AL ACCEDER A LA BASE DE DATOS", error))
     console.log("PRODUCTOS",products);
