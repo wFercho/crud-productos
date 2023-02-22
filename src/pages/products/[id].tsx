@@ -15,7 +15,7 @@ function ProductPage(props:Props) {
     try {
       await axios.delete("/api/products/" + id);
       toast.success("Producto eliminado");
-      router.push("/products");
+      router.push("/");
     } catch (error) {
       if (isAxiosError(error)) console.error(error.response?.data.message);
     }

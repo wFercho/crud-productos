@@ -52,7 +52,7 @@ export function ProductForm() {
         });
       }
 
-      router.push("/products");
+      router.push("/");
     } catch (error) {
       if(axios.isAxiosError(error)){
         toast.error(error.response?.data.message);

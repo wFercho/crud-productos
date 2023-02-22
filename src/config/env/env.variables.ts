@@ -5,6 +5,6 @@ export const ENV = {
     DB_USERPASS: process.env.DB_PASSWORD,
     DB_NAME: process.env.DB_NAME,
     DB_USER: process.env.DB_USER,
-    APP_PORT: process.env.APP_PORT,
+    APP_PORT: process.env.PORT,
     ID_ARCH_PLANO_DRIVE: process.env.ID_ARCH_PLANO_DRIVE
   };
