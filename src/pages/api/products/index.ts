@@ -1,4 +1,3 @@
-import { connectToDB } from "@app/config/db.connection";
 import {
   getProducts,
   saveProduct,
@@ -9,7 +8,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  connectToDB();
 
   switch (req.method) {
     case "GET":
