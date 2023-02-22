@@ -4,13 +4,14 @@ import toast from "react-hot-toast";
 import { Layout } from "@app/components/Layout";
 import { GetServerSideProps } from "next";
 import { Product } from "@app/types";
+import { ENV } from "@app/config/env/env.variables";
 
 interface Props {
-  product: any[]
+  product: any[];
 }
-function ProductPage(props:Props) {
+function ProductPage(props: Props) {
   const router = useRouter();
-  const product:Product = props.product[0];
+  const product: Product = props.product[0];
   const handleDelete = async (id: string) => {
     try {
       await axios.delete("/api/products/" + id);
@@ -24,9 +25,16 @@ function ProductPage(props:Props) {
   return (
     <Layout>
       <div className="p-6 bg-white dark:bg-gray-800">
-        <p className="font-bold">Nombre: <span className="font-normal">{product.name}</span></p>
-        <p className="font-bold">Descripción: <span className="font-normal">{product.description}</span></p>
-        <p className="font-bold">Precio: <span className="font-normal">{product.price}</span></p>
+        <p className="font-bold">
+          Nombre: <span className="font-normal">{product.name}</span>
+        </p>
+        <p className="font-bold">
+          Descripción:{" "}
+          <span className="font-normal">{product.description}</span>
+        </p>
+        <p className="font-bold">
+          Precio: <span className="font-normal">{product.price}</span>
+        </p>
       </div>
 
       <div className="mt-7 flex justify-center">
@@ -48,9 +56,8 @@ function ProductPage(props:Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  
   const { data: product } = await axios.get(
-    "http://localhost:3000/api/products/" + query.id
+    `${ENV.SERVER}/api/products/${query.id}`
   );
 
   return {

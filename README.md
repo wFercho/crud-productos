@@ -62,6 +62,8 @@ DB_USER=
 DB_PASSWORD=
 DB_NAME=
 ID_ARCH_PLANO_DRIVE =
+SERVER=
+##SERVER solo la definimos si desplegamos en Vercel u otra plataforma diferente a la local
 ```
 En el archivo que acabamos de crear colocamos las variables que tenemos en railway.  
 

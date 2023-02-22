@@ -13,12 +13,3 @@ function NewPage() {
 }
 export default NewPage;
 
-// export const getServerSideProps = async () => {
-//   const res = await axios.get("http://localhost:3000/api/products");
-
-//   return {
-//     props: {
-//       products: res.data,
-//     },
-//   };
-// };
