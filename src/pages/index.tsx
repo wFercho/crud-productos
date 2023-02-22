@@ -1,3 +1,4 @@
+import { pool } from "@app/config/db.connection";
 import axios from "axios";
 import { Layout } from "@app/components/Layout";
 import { ProductCard } from "@app/components/ProductCard";
@@ -39,9 +40,9 @@ export const getServerSideProps = async () => {
   const products = await axios
     .get("http://localhost:3000/api/products")
     .then(({ data }) => data)
-    .catch((err) => console.log("ERROR AL ACCEDER A LA BASE DE DATOS", err))
+    .catch(() => console.error("ERROR AL ACCEDER A LA BASE DE DATOS"))
     
-
+  
   const googleDocID = ENV.ID_ARCH_PLANO_DRIVE;
   
   
