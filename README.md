@@ -24,7 +24,7 @@ Tener instalado:
 ![Diagrama de Despliegue](./images/diagrama-despliegue.png)
 ## Diagrama de despliegue usando Vercel
 ![Diagrama de Despliegue](./images/vercel-deploy-diagrama.png)
-## Desplegando la aplicación desde nuestro maquina local a través de Ngrok
+## Descargando el código de la aplicación
 Primero clonamos este repositorio:
 ```bash
 git clone https://github.com/wFercho/crud-productos
