@@ -20,7 +20,7 @@ Tener instalado:
 #### Desarrollo
 - Typescript, para tener los beneficios de un lenguaje tipado.
 - Tailwind, un framework de CSS para dar estilos a nuestras interfaces.
-## Diagrama de despliegue usando nuestra maquina local
+## Diagrama de despliegue usando nuestra maquina local con Ngrok
 ![Diagrama de Despliegue](./images/diagrama-despliegue.png)
 ## Diagrama de despliegue usando Vercel
 ![Diagrama de Despliegue](./images/vercel-deploy-diagrama.png)
