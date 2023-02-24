@@ -63,7 +63,7 @@ DB_PASSWORD=
 DB_NAME=
 ID_ARCH_PLANO_DRIVE =
 SERVER=
-##SERVER solo la definimos si desplegamos en Vercel u otra plataforma diferente a la local
+##SERVER solo la definimos si desplegamos en Vercel u otra plataforma diferente, o cuando usamos ngrok para exponer nuestra maquina local
 ```
 En el archivo que acabamos de crear colocamos las variables que tenemos en railway.  
 
@@ -98,14 +98,37 @@ Usando nuestro navegador de preferencia accedemos a:
 
  [http://localhost:3000/products](http://localhost:3000/products) 
 ## Desplegando la aplicación usando Ngrok
-Teniendo ejecutada la apliación en nuestra maquina local, solo nos resta usar el CLI de Ngrok para exponer nuestra aplicación a internet:
+Ejecutamos el CLI de ngrok para exponer nuestra aplicación
 ```bash
 ngrok http 3000
 ```
 Siendo **http** el protocolo que usamos y **3000** el puerto donde se  está ejecutando la aplicación.
-
-Finalmente para acceder a nuestra aplicación desde internet usamos la **URL** 	que Ngrok nos generó. (El siguiente es un ejemplo de lo que veriamos al ejecutar ngrok exponiendo por http el la aplicación que está ejecutandose en el puerto 3000)
 ![](./images/ngrok-http-connection.png)
+Posteriormente configuramos nuestra variable de entorno ser servidor **SERVER** de nuestro archivo .env.local
+```bash
+# En este caso sería "https://ca56-191-95-172.8.ngrok.io"
+
+#./env.local
+SERVER=
+``` 
+Hacemos build.
+```bash
+pnpm run build
+# or
+npm run build
+# or
+yarn run build
+```
+Luego de esto podemos ejecutar la aplicación:
+```bash
+pnpm run start
+# or
+npm run start
+# or
+yarn run start
+```
+Finalmente para acceder a nuestra aplicación desde internet usamos la **URL** 	que Ngrok nos generó. (El siguiente es un ejemplo de lo que veriamos al ejecutar ngrok exponiendo por http el la aplicación que está ejecutandose en el puerto 3000)
+
 ## Desplegando la aplicación usando Vercel
 A diferencia de como se explicó para exponer la aplicación a internet de forma local usando Ngrok, acá todo el proceso lo hacemos usando la plataforma de Vercel.  
 1. Debemos tener una cuenta en GitHub, para que de esta forma podamos hacerle fork a este repositorio.
