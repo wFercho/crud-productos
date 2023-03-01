@@ -25,11 +25,11 @@ Tener instalado:
 ## Diagrama de despliegue usando Vercel
 ![Diagrama de Despliegue](./images/vercel-deploy-diagrama.png)
 ## Descargando el código de la aplicación
-Primero clonamos este repositorio:
+Desde nuestra terminal de comandos de preferencia, clonamos este repositorio:
 ```bash
 git clone https://github.com/wFercho/crud-productos
 ```
-Una vez descardo, ingresamos en la carpeta del proyecto:
+Una vez clonado el repositorio (descargado), ingresamos en la carpeta del proyecto:
 ```bash
 cd crud-productos
 ```
@@ -69,34 +69,25 @@ En el archivo que acabamos de crear colocamos las variables que tenemos en railw
 
 La aplicación de CRUD de productos automáticamente creará la tabla "product" en la base de datos que acabamos de crear. Por lo que solo nos tenemos que encargar de ingresar las variables de entorno para lograr la conexión con la base de datos.
 
-### Configurando la conexión a archivo externo (Google Drive)
+### Configurando la conexión a un archivo externo (Google Drive)
 Para consumir el contenido de un archivo de texto plano que esté alojado en Google Drive: 
 1. Creamos un enlace para compartir la vista del documento.
 ![Compartir Documento desde Google Drive](./images/compartir-documento-google-drive.png)
 2. De ese enlace inferimos el ID del documento
 "https://drive.google.com/file/d/1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg/view". 
 Para este caso (siendo 19 de Febrero de 2023), así es como se ve el enlace para la vista del documento. El ID es el que se encuentra después del **"d/"** y va hasta el siguiente **"/"**, en este caso sería "**1LSQzDmTCWe3aIL9fkve9lvSEjKdfCHQg**". Este va en la variable de entorno "**ID_ARCH_PLANO_DRIVE**".
-## Haciendo Build de la apliación y ejecutandola
-Finalmente, una vez configurada la conexión a una base de datos externa Postgresql, y la conexión a un archivo de texto plano alojado en Google Drive, accediendo a el desde un enlace publico, finalmente hacemos build de la aplicación:
+## Ejecutando la apliación en desarrollo
+Para comprobar que las conexiones a los servicios remotos se hicieron con éxito, podemos ejecutar nuestra aplicación en el entorno de desarrollo, para esto hacemos uso del siguiente comando en nuetra terminal.
 ```bash
-pnpm run build
+pnpm run dev
 # or
-npm run build
+npm run dev
 # or
-yarn run build
+yarn run dev
 ```
-Luego de esto podemos ejecutar la aplicación:
-```bash
-pnpm run start
-# or
-npm run start
-# or
-yarn run start
-```
-
 Usando nuestro navegador de preferencia accedemos a:
 
- [http://localhost:3000/products](http://localhost:3000/products) 
+ [http://localhost:3000/](http://localhost:3000/) 
 ## Desplegando la aplicación usando Ngrok
 Ejecutamos el CLI de ngrok para exponer nuestra aplicación
 ```bash
