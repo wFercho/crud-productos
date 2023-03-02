@@ -1,4 +1,3 @@
-import { pool } from "@app/config/db.connection";
 import axios from "axios";
 import { Layout } from "@app/components/Layout";
 import { ProductCard } from "@app/components/ProductCard";
@@ -42,14 +41,10 @@ export const getServerSideProps = async () => {
     .then(({ data }) => data)
     .catch((error) => console.error("ERROR AL ACCEDER AL ENDPOINT", error?.config?.url))
     
-    
-  
   const googleDocID = ENV.ID_ARCH_PLANO_DRIVE;
   
-  
   let dataGoogleDrive = "Error al cargar el contenido";
-  try {
-    
+  try {  
     const res = await axios.get(
       `https://docs.google.com/uc?export=download&id=${googleDocID}`
     );
@@ -58,8 +53,7 @@ export const getServerSideProps = async () => {
   } catch (error) {
     console.log("ERROR AL ENCONTRAR EL DOCUMENTO DE GOOGLE DRIVE", error);
   }
-
-  
+ 
   return {
     props: {
       products: (products != undefined ? products.rows : []),
