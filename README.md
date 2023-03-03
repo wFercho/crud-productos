@@ -33,6 +33,35 @@ Una vez clonado el repositorio (descargado), ingresamos en la carpeta del proyec
 ```bash
 cd crud-productos
 ```
+### Estructura general de carpetas y archivos del proyecto
+```mk
+- /.next
+- /node_modules
+- /public
+- /src
+	- /components
+	- /config
+		- /env
+	- /database
+	- /pages
+		- /products
+			- /edit
+		- /api
+	- /server
+		- /controllers
+		- /services
+	- /styles
+	- /types
+- .env.example
+- .eslintrc.json
+- .gitignore
+- next.config.js
+- package.json
+- postcss.config.js
+- tailwind.config.js
+- tsconfig.json
+
+```
 
 Luego, instalamos los paquetes estando en la carpeta del proyecto:
 ```bash
